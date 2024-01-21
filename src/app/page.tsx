@@ -1,16 +1,13 @@
+"use client"
+
 import LoginButton from "@/components/LoginButton";
 import ResultButton from "@/components/ResultButton";
-import { Image } from "@nextui-org/react";
-import { cookies } from 'next/headers'
+import { Button, Image } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function Home() {
-    // const token = getTokenFromUrl()
-    const token = undefined
-    if (token != undefined) {
-        const cookieStore = cookies()
-        cookieStore.set("access_token", token)
-        document.location.reload()
-    }
+    const { status } = useSession();
 
     return (
         <>
@@ -21,12 +18,29 @@ export default function Home() {
                 </h1>
                 <div className="flex justify-center w-max ml-6">
                     <ResultButton />
-                    <LoginButton
-                        size="lg"
-                        variant="solid"
-                        radius="full"
-                        text="Zaloguj się aby zagłosować"
-                    />
+                    {status === "authenticated" ? (
+                        <Button
+                            as={Link}
+                            href="/vote"
+                            size="lg"
+                            radius="full"
+                            color="success"
+                            variant="flat"
+                            className="w-[275px]"
+                            startContent={
+                                <Image src="vote.svg" width="22px" />
+                            }
+                        >
+                            Weź udział w głosowaniu
+                        </Button>
+                    ) : (
+                        <LoginButton
+                            size="lg"
+                            variant="solid"
+                            radius="full"
+                            text="Zaloguj się aby zagłosować"
+                        />
+                    )}
                 </div>
             </div>
             <Image src="https://cdn-icons-png.flaticon.com/512/4168/4168977.png" className="ml-16" alt="Ikona nagrody" width="350px" />
