@@ -1,4 +1,4 @@
-import { isAuthenticated } from "@/utils/Auth";
+import { isAuthenticated } from "@/Utils/Auth";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 

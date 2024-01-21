@@ -8,6 +8,10 @@ import {
     NavbarItem,
     Image,
     Button,
+    Dropdown,
+    DropdownTrigger,
+    DropdownItem,
+    DropdownMenu,
     Avatar,
 } from "@nextui-org/react";
 import LoginButton from "./LoginButton";
@@ -34,17 +38,16 @@ export default function Navbar_() {
                 {status === "authenticated" ? (
                     <>
                         <NavbarItem>
-                            <Avatar size="sm" src={session.user?.image} />
-                        </NavbarItem>
-                        <NavbarItem>
-                            <Button
-                                onClick={() => signOut()}
-                                color="danger"
-                                variant="ghost"
-                                size="sm"
-                            >
-                                Wyloguj
-                            </Button>
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <Avatar size="sm" src={session.user?.image} style={{cursor: "pointer"}} />
+                                </DropdownTrigger>
+                                <DropdownMenu>
+                                    <DropdownItem onClick={() => signOut()} key="delete" className="text-danger" color="danger">
+                                        Wyloguj
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
                         </NavbarItem>
                     </>
                 ) : (
