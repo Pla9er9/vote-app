@@ -1,6 +1,6 @@
 import { Card, CardHeader, Image } from "@nextui-org/react";
 
-export default function Result() {
+export default function Result({ data }) {
     const paragraph = {
         fontSize: "12px",
         color: "#0070F0",
@@ -13,24 +13,9 @@ export default function Result() {
         marginRight: "15px",
     };
 
-    const items = [];
-    for (let i = 0; i < 6; i++) {
-        items.push(
-            <div className="row justify-between">
-                <p style={paragraph}>
-                    <span style={{ color: "#d1d7e0", marginRight: "8px" }}>
-                        {i + 1}.
-                    </span>{" "}
-                    Walka z żabami
-                </p>
-                <p style={percent}>40%</p>
-            </div>
-        );
-    }
-
     return (
         <Card
-            className="w-[300px] my-4 py-2"
+            className="w-[280px] h-[210px] my-4 mx-[20px] py-2"
             style={{
                 background:
                     "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(73,118,196,0.08) 100%)",
@@ -44,10 +29,20 @@ export default function Result() {
                         alt="ikona nagrody"
                         width="20px"
                     />
-                    <p style={{ marginLeft: "5px" }}>Stream roku</p>
+                    <p style={{ marginLeft: "5px" }}>{data.title}</p>
                 </div>
             </CardHeader>
-            {items}
+            {data.answers.map(e =>
+                <div className="row justify-between">
+                    <p style={paragraph}>
+                        <span style={{ color: "#d1d7e0", marginRight: "8px" }}>
+                            {e.index + 1}.
+                        </span>{" "}
+                        {e.title}
+                    </p>
+                    <p style={percent}>{e.votes}</p>
+                </div>
+            )}
         </Card>
     );
 }

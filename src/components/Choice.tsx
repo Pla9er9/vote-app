@@ -3,26 +3,26 @@ import {
     CardFooter,
     Image,
 } from "@nextui-org/react";
-import { useState } from "react";
 
-export default function Choice() {
-    const [isSelected, setSelected] = useState(false);
+export default function Choice({image, isSelected, text, onClick}) {
+    let css = {
+        height: "196px",
+        width: "350px",
+        backgroundImage: `url("${image}")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        borderBottomLeftRadius: "0px"
+    }
+
     return (
         <Card
-            className="w-[350px] my-4"
-            style={{ outline: isSelected ? "solid 3px #dbb537" : "" }}
-            onMouseDown={() => {
-                setSelected((s) => (s = !s))
-                console.log(isSelected)
-            }}
+            className="w-[350px] m-4"
+            style={{ outline: isSelected ? "solid 5px #dbb537" : "" }}
+            onMouseDown={onClick}
         >
-            <Image
-                src="https://i.ytimg.com/vi/LIbf1FPYCGY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBZ-oRjA5TqmWWwvkHzOhvDsUy0lA"
-                alt=""
-                style={{ borderBottomLeftRadius: "0px" }}
-            />
+            <div style={css}></div>
             <CardFooter>
-                <p>Walka z żabami</p>
+                <p>{text}</p>
             </CardFooter>
         </Card>
     );

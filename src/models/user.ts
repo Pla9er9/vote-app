@@ -10,9 +10,10 @@ const userSchema = new Schema(
             type: String,
             require: true
         },
-        votes: {
-            type: Array,
-            require: false
+        voted: {
+            type: Boolean,
+            require: false,
+            default: false
         },
     },
     { timestamps: true }

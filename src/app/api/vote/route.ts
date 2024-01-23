@@ -1,7 +1,13 @@
+import VotingPosition from "@/models/voting_position";
 import { NextApiRequest } from "next";
+import { NextResponse } from "next/server";
 
 export async function GET() {
-    // Zwraca głosy usera
+    let res = await VotingPosition.find({})
+    res.forEach(e => e.answers.forEach(i => {
+        delete i["votes"]
+    }))
+    return NextResponse.json(res)
 }
 
 export async function POST(req: NextApiRequest) {
@@ -12,4 +18,4 @@ export async function POST(req: NextApiRequest) {
         })
     }
     // Zapisuje głosy usera jezeli ich nie ma
-} 
+}
