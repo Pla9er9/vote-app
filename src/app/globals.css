@@ -16,3 +16,13 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+::-moz-selection {
+  color: #fff;
+  background: rgba(113, 0, 128, 0.448);
+}
+
+::selection {
+  color: #fff;
+  background: rgba(113, 0, 128, 0.448);
+}
