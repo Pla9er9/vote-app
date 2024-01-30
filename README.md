@@ -22,6 +22,17 @@ Install dependencies
   npm install
 ```
 
+Create .env file
+```env
+TWITCH_CLIENT_ID = 
+TWITCH_CLIENT_SECRET = 
+MONGODB_USERNAME = 
+MONGODB_PASSWORD = 
+MONGODB_URL = 
+NEXTAUTH_SECRET = 
+NEXTAUTH_URL = 
+```
+
 Start the server
 
 ```bash
