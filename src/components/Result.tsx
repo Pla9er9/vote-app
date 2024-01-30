@@ -35,7 +35,7 @@ export default function Result({ data }) {
         </div>
       </CardHeader>
       {data.answers.map((e) => (
-        <div className="row justify-between">
+        <div className="row justify-between" key={e.title}>
           <p style={paragraph}>
             <span style={{ color: "#d1d7e0", marginRight: "8px" }}>
               {(i += 1)}.

@@ -81,8 +81,8 @@ export default function Vote() {
   if (isLoading) {
     return (
       <div className="row w-full flex-wrap justify-center mt-16 ">
-        {loading.map((e) => (
-          <Card className="w-[350px] h-[240px] m-4 space-y-5 p-4" radius="lg">
+        {loading.map(e => (
+          <Card className="w-[350px] h-[240px] m-4 space-y-5 p-4" radius="lg" key={"card-" + e} >
             <Skeleton className="rounded-lg">
               <div className="h-48 rounded-lg bg-default-300"></div>
             </Skeleton>
@@ -103,6 +103,7 @@ export default function Vote() {
       <div className="row flex-wrap w-[100%] justify-center">
         {data[current - 1].answers.map((e) => (
           <Choice
+            key={"choice-" + e.title}
             text={e.title}
             image={e.imageUrl}
             isSelected={selected[current - 1] === e.index}
