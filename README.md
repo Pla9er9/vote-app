@@ -1,6 +1,6 @@
 # Voting app
 
-Copy off voting webapp złote antosie
+Copy off voting webapp złote antosie made in nextjs and nextui
 
 ## Run Locally
 
