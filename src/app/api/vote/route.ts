@@ -13,7 +13,6 @@ export async function POST(req: NextApiRequest) {
   const session = await getServerSession(req);
 
   if (!session) {
-    console.log("Unauthorized");
     return new Response(null, { status: 401 });
   }
 

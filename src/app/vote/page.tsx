@@ -54,7 +54,6 @@ export default function Vote() {
   }
 
   async function submit() {
-    console.log("LOL");
     if (selected.includes(undefined)) {
       return;
     }
@@ -63,7 +62,6 @@ export default function Vote() {
       body: JSON.stringify(selected),
       credentials: "include",
     });
-    console.log(res.status);
     if (res.ok) {
       await router.replace("/");
     } else {

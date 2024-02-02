@@ -8,7 +8,6 @@ import Link from "next/link";
 
 export default function Home() {
   const session = useSession();
-  console.log(session.data);
   return (
     <>
       <div className="flex flex-col max-w-2xl pt-28 mr-16">
@@ -20,33 +19,37 @@ export default function Home() {
           <ResultButton />
           {session.status === "authenticated" ? (
             <>
-              {session.data.user?.voted === false ? (
-                <Button
-                  as={Link}
-                  href="/vote"
-                  size="lg"
-                  radius="full"
-                  color="success"
-                  variant="flat"
-                  className="w-[275px]"
-                  startContent={
-                    <Image src="vote.svg" width="22px" alt="Ikona głosowania" />
-                  }
-                >
-                  Weź udział w głosowaniu
-                </Button>
-              ) : (
-                <Button
-                  size="lg"
-                  radius="full"
-                  variant="faded"
-                  color="success"
-                  className="w-[275px]"
-                  disabled
-                >
-                  Już zagłosowałeś
-                </Button>
-              )}
+              {Object.hasOwn(session.data.user, 'voted') ? (
+                <>
+                  {session.data.user?.voted === false ? (
+                    <Button
+                      as={Link}
+                      href="/vote"
+                      size="lg"
+                      radius="full"
+                      color="success"
+                      variant="flat"
+                      className="w-[275px]"
+                      startContent={
+                        <Image src="vote.svg" width="22px" alt="Ikona głosowania" />
+                      }
+                    >
+                      Weź udział w głosowaniu
+                    </Button>
+                  ) : (
+                    <Button
+                      size="lg"
+                      radius="full"
+                      variant="faded"
+                      color="success"
+                      className="w-[275px]"
+                      disabled
+                    >
+                      Już zagłosowałeś
+                    </Button>
+                  )}
+                </>
+              ) : <></>}
             </>
           ) : (
             <LoginButton
